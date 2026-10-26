@@ -1,0 +1,103 @@
+Using SuperLink: local (127.0.0.1:39125)
+Successfully started run 13817017355796538459
+[92mINFO [0m:      Starting logstream for run_id `13817017355796538459`
+[92mINFO [0m:      Starting Flower Simulation
+[93mWARNING [0m:   Since flwr 1.32, default simulated SuperNodes changed from 10 to 2.
+[92mINFO [0m:      Federation `@none/default` (5 simulated SuperNodes)
+[92mINFO [0m:      To change federation size, use the following command:
+[92mINFO [0m:      	flwr federation simulation-config @none/default <superlink> --num-supernodes <N>
+[93mWARNING [0m:   fraction_evaluate is set to 0.0. Federated evaluation will be skipped.
+[92mINFO [0m:      Starting FedAvg strategy:
+[92mINFO [0m:      	├── Number of rounds: 35
+[92mINFO [0m:      	├── ArrayRecord (0.24 MB)
+[92mINFO [0m:      	├── ConfigRecord (train): {'lr': 0.01}
+[92mINFO [0m:      	├── ConfigRecord (evaluate): (empty!)
+[92mINFO [0m:      	├──> Sampling:
+[92mINFO [0m:      	│	├──Fraction: train (1.00) | evaluate ( 0.00)
+[92mINFO [0m:      	│	├──Minimum nodes: train (2) | evaluate (0)
+[92mINFO [0m:      	│	└──Minimum available nodes: 2
+[92mINFO [0m:      	└──> Keys in records:
+[92mINFO [0m:      		├── Weighted by: 'num-examples'
+[92mINFO [0m:      		├── ArrayRecord key: 'arrays'
+[92mINFO [0m:      		└── ConfigRecord key: 'config'
+[92mINFO [0m:      
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[92mINFO [0m:      Initial global evaluation results: {'accuracy': 0.1035, 'loss': 2.3020140279697467, 'kappa': 0.0038888888888887196, 'f1': 0.05086384350998093}
+[92mINFO [0m:      
+[92mINFO [0m:      [ROUND 1/35]
+[92mINFO [0m:      configure_train: Sampled 5 nodes (out of 5)
+c:\Users\rasmu\OneDrive - BTH Student\Documents\PythonProjects\year4\AI-Security--DV2607\Assignment\.venv311_AI_security\Lib\site-packages\ray\_private\worker.py:2051: FutureWarning: Tip: In future versions of Ray, Ray will no longer override accelerator visible devices env var if num_gpus=0 or num_gpus=None (default). To enable this behavior and turn off this error message, set RAY_ACCEL_ENV_VAR_OVERRIDE_ON_ZERO=0
+  warnings.warn(
+[33m(raylet)[0m Stack (most recent call first):
+[33m(raylet)[0m   File   File ""c:\Users\rasmu\OneDrive - BTH Student\Documents\PythonProjects\year4\AI-Security--DV2607\Assignment\.venv311_AI_security\Lib\site-packages\ray\_private\worker.py"c:\Users\rasmu\OneDrive - BTH Student\Documents\PythonProjects\year4\AI-Security--DV2607\Assignment\.venv311_AI_security\Lib\site-packages\ray\_private\worker.py", line 628 in job_logging_config
+[33m(raylet)[0m   File "c:\Users\rasmu\OneDrive - BTH Student\Documents\PythonProjects\year4\AI-Security--DV2607\Assignment\.venv311_AI_security\Lib\site-packages\ray\_private\worker.py", line 628 in job_logging_config
+[33m(raylet)[0m   File "c:\Users\rasmu\OneDrive - BTH Student\Documents\PythonProjects\year4\AI-Security--DV2607\Assignment\.venv311_AI_security\Lib\site-packages\ray\_private\worker.py", line 2801 in disconnect
+[33m(raylet)[0m   File "c:\Users\rasmu\OneDrive - BTH Student\Documents\PythonProjects\year4\AI-Security--DV2607\Assignment\.venv311_AI_security\Lib\site-packages\ray\_private\worker.py", line 2132 in shutdown
+[33m(raylet)[0m   File "c:\Users\rasmu\OneDrive - BTH Student\Documents\PythonProjects\year4\AI-Security--DV2607\Assignment\.venv311_AI_security\Lib\site-packages\ray\_private\worker.py", line 1143 in wrapper
+[33m(raylet)[0m , line 2801 in disconnect
+[36m(pid=2420)[0m 2026-10-25 22:43:39.564624: I tensorflow/core/util/port.cc:113] oneDNN custom operations
+[36m(pid=2420)[0m  are 
+[36m(pid=2420)[0m on
+[36m(pid=2420)[0m . Y
+[36m(pid=2420)[0m o
+[36m(pid=2420)[0m u
+[36m(pid=2420)[0m  
+[36m(pid=2420)[0m m
+[36m(pid=2420)[0m a
+[36m(pid=2420)[0m y see s
+[36m(pid=2420)[0m ligh
+[36m(pid=2420)[0m tly 
+[36m(pid=2420)[0m d
+[36m(pid=2420)[0m if
+[36m(pid=2420)[0m f
+[36m(pid=2420)[0m er
+[36m(pid=2420)[0m e
+[36m(pid=2420)[0m n
+[36m(pid=2420)[0m t n
+[36m(pid=2420)[0m u
+[36m(pid=2420)[0m me
+[36m(pid=2420)[0m r
+[36m(pid=2420)[0m i
+[36m(pid=2420)[0m c
+[36m(pid=2420)[0m al
+[36m(pid=2420)[0m  
+[36m(pid=2420)[0m res
+[36m(pid=2420)[0m u
+[33m(raylet)[0m Stack (most recent call first):[32m [repeated 11x across cluster] (Ray deduplicates logs by default. Set RAY_DEDUP_LOGS=0 to disable log deduplication, or see https://docs.ray.io/en/master/ray-observability/user-guides/configure-logging.html#log-deduplication for more options.)[0m
+[33m(raylet)[0m   File "c:\Users\rasmu\OneDrive - BTH Student\Documents\PythonProjects\year4\AI-Security--DV2607\Assignment\.venv311_AI_security\Lib\site-packages\ray\_private\worker.py", line 628 in job_logging_config[32m [repeated 10x across cluster][0m
+[33m(raylet)[0m   File "c:\Users\rasmu\OneDrive - BTH Student\Documents\PythonProjects\year4\AI-Security--DV2607\Assignment\.venv311_AI_security\Lib\site-packages\ray\_private\worker.py", line 2801 in disconnect[32m [repeated 10x across cluster][0m
+[33m(raylet)[0m   File "c:\Users\rasmu\OneDrive - BTH Student\Documents\PythonProjects\year4\AI-Security--DV2607\Assignment\.venv311_AI_security\Lib\site-packages\ray\_private\worker.py", line 2132 in shutdown[32m [repeated 11x across cluster][0m
+[33m(raylet)[0m   File "c:\Users\rasmu\OneDrive - BTH Student\Documents\PythonProjects\year4\AI-Security--DV2607\Assignment\.venv311_AI_security\Lib\site-packages\ray\_private\client_mode_hook.py", line 107 in wrapper[32m [repeated 23x across cluster][0m
+[36m(pid=15480)[0m 2026-10-25 22:43:39.570979: I tensorflow/core/util/port.cc:113] oneDNN custom operations are on. You may see slightly different numerical results due to floating
+[36m(pid=15480)[0m -
+[36m(pid=15480)[0m po
+[36m(pid=15480)[0m t
+[36m(pid=15480)[0m  ro
+[36m(pid=15480)[0m nd
+[36m(pid=15480)[0m -of
+[36m(pid=15480)[0m  
+[36m(pid=15480)[0m s
+[36m(pid=15480)[0m om
+[36m(pid=15480)[0m  di
+[36m(pid=15480)[0m ff
+[36m(pid=15480)[0m ent comp
+[36m(pid=15480)[0m ut
+[36m(pid=15480)[0m at
+[36m(pid=15480)[0m ion 
+[36m(pid=15480)[0m ders.
+[36m(pid=15480)[0m  
+[36m(pid=15480)[0m To
+[36m(pid=20244)[0m 2026-10-25 22:43:39.558542: I tensorflow/core/util/port.cc:113] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+[36m(pid=2420)[0m lts due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+[36m(pid=2420)[0m AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+[36m(pid=15480)[0m  turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+[36m(pid=15480)[0m o[32m [repeated 2x across cluster][0m
+[36m(pid=15480)[0m u
+[36m(pid=15480)[0m  f[32m [repeated 2x across cluster][0m
+[36m(pid=15480)[0m er
+[36m(pid=15480)[0m e
+[36m(pid=15480)[0m n
+[36m(pid=15480)[0m r[32m [repeated 5x across cluster][0m
+[36m(pid=15480)[0m i
+[36m(pid=5632)[0m 2026-10-25 22:43:39.567256: I tensorflow/core/util/port.cc:113] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.[32m [repeated 3x across cluster][0m
+[36m(pid=2420)[0m AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'[32m [repeated 18x across cluster][0m
