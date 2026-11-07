@@ -1,0 +1,103 @@
+Starting local SuperLink on 127.0.0.1:39125...
+Using SuperLink: local (127.0.0.1:39125)
+Successfully started run 4488344733920676813
+[92mINFO [0m:      Starting logstream for run_id `4488344733920676813`
+[92mINFO [0m:      Starting Flower Simulation
+[93mWARNING [0m:   Since flwr 1.32, default simulated SuperNodes changed from 10 to 2.
+[92mINFO [0m:      Federation `@none/default` (5 simulated SuperNodes)
+[92mINFO [0m:      To change federation size, use the following command:
+[92mINFO [0m:      	flwr federation simulation-config @none/default <superlink> --num-supernodes <N>
+[32m[1mSuccessfully installed quickstart-pytorch to C:\Users\rasmu\.flwr_dv2607_terminal\apps\flwrlabs.quickstart-pytorch.1.1.13.4de8f8bb.[0m
+[93mWARNING [0m:   fraction_evaluate is set to 0.0. Federated evaluation will be skipped.
+Selected strategy: fedtrimmedavg
+[92mINFO [0m:      Starting FedTrimmedAvg strategy:
+[92mINFO [0m:      	├── Number of rounds: 2
+[92mINFO [0m:      	├── ArrayRecord (0.63 MB)
+[92mINFO [0m:      	├── ConfigRecord (train): {'lr': 0.01}
+[92mINFO [0m:      	├── ConfigRecord (evaluate): (empty!)
+[92mINFO [0m:      	├──> FedTrimmedAvg settings:
+[92mINFO [0m:      	│	└── beta: 0.2
+[92mINFO [0m:      	├──> Sampling:
+[92mINFO [0m:      	│	├──Fraction: train (1.00) | evaluate ( 0.00)
+[92mINFO [0m:      	│	├──Minimum nodes: train (2) | evaluate (0)
+[92mINFO [0m:      	│	└──Minimum available nodes: 2
+[92mINFO [0m:      	└──> Keys in records:
+[92mINFO [0m:      		├── Weighted by: 'num-examples'
+[92mINFO [0m:      		├── ArrayRecord key: 'arrays'
+[92mINFO [0m:      		└── ConfigRecord key: 'config'
+[92mINFO [0m:      
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[92mINFO [0m:      Initial global evaluation results: {'accuracy': 0.0998, 'loss': 2.3053208302847947, 'kappa': -0.00022222222222212373, 'f1': 0.0327295508964819}
+[92mINFO [0m:      
+[92mINFO [0m:      [ROUND 1/2]
+[92mINFO [0m:      configure_train: Sampled 5 nodes (out of 5)
+c:\Users\rasmu\OneDrive - BTH Student\Documents\PythonProjects\year4\AI-Security--DV2607\Assignment\.venv311_AI_security\Lib\site-packages\ray\_private\worker.py:2051: FutureWarning: Tip: In future versions of Ray, Ray will no longer override accelerator visible devices env var if num_gpus=0 or num_gpus=None (default). To enable this behavior and turn off this error message, set RAY_ACCEL_ENV_VAR_OVERRIDE_ON_ZERO=0
+  warnings.warn(
+[33m(raylet)[0m Stack (most recent call first):
+[33m(raylet)[0m   File "c:\Users\rasmu\OneDrive - BTH Student\Documents\PythonProjects\year4\AI-Security--DV2607\Assignment\.venv311_AI_security\Lib\site-packages\ray\_private\worker.py", line 628 in job_logging_config
+[33m(raylet)[0m   File "c:\Users\rasmu\OneDrive - BTH Student\Documents\PythonProjects\year4\AI-Security--DV2607\Assignment\.venv311_AI_security\Lib\site-packages\ray\_private\worker.py", line 2801 in disconnect
+[33m(raylet)[0m   File "c:\Users\rasmu\OneDrive - BTH Student\Documents\PythonProjects\year4\AI-Security--DV2607\Assignment\.venv311_AI_security\Lib\site-packages\ray\_private\worker.py", line 2132 in shutdown
+[33m(raylet)[0m   File "c:\Users\rasmu\OneDrive - BTH Student\Documents\PythonProjects\year4\AI-Security--DV2607\Assignment\.venv311_AI_security\Lib\site-packages\ray\_private\worker.py", line 1143 in wrapper
+[36m(pid=14312)[0m 2026-11-07 18:14:56.204710: I tensorflow/core/util/port.cc:113] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+[33m(raylet)[0m Stack (most recent call first):[32m [repeated 11x across cluster] (Ray deduplicates logs by default. Set RAY_DEDUP_LOGS=0 to disable log deduplication, or see https://docs.ray.io/en/master/ray-observability/user-guides/configure-logging.html#log-deduplication for more options.)[0m
+[33m(raylet)[0m   File "c:\Users\rasmu\OneDrive - BTH Student\Documents\PythonProjects\year4\AI-Security--DV2607\Assignment\.venv311_AI_security\Lib\site-packages\ray\_private\worker.py", line 628 in job_logging_config[32m [repeated 11x across cluster][0m
+[33m(raylet)[0m   File "c:\Users\rasmu\OneDrive - BTH Student\Documents\PythonProjects\year4\AI-Security--DV2607\Assignment\.venv311_AI_security\Lib\site-packages\ray\_private\worker.py", line 2801 in disconnect[32m [repeated 11x across cluster][0m
+[33m(raylet)[0m   File "c:\Users\rasmu\OneDrive - BTH Student\Documents\PythonProjects\year4\AI-Security--DV2607\Assignment\.venv311_AI_security\Lib\site-packages\ray\_private\worker.py", line 2132 in shutdown[32m [repeated 11x across cluster][0m
+[33m(raylet)[0m   File "c:\Users\rasmu\OneDrive - BTH Student\Documents\PythonProjects\year4\AI-Security--DV2607\Assignment\.venv311_AI_security\Lib\site-packages\ray\_private\client_mode_hook.py", line 107 in wrapper[32m [repeated 23x across cluster][0m
+[36m(pid=14312)[0m AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'
+[36m(pid=25284)[0m 2026-11-07 18:14:56.204710: I tensorflow/core/util/port.cc:113] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.[32m [repeated 5x across cluster][0m
+[36m(pid=14312)[0m AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'[32m [repeated 18x across cluster][0m
+[36m(pid=8924)[0m WARNING:tensorflow:From c:\Users\rasmu\OneDrive - BTH Student\Documents\PythonProjects\year4\AI-Security--DV2607\Assignment\.venv311_AI_security\Lib\site-packages\keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+[36m(pid=8924)[0m 
+[36m(pid=25284)[0m AttributeError: 'MessageFactory' object has no attribute 'GetPrototype'[32m [repeated 11x across cluster][0m
+[36m(pid=17396)[0m 
+[36m(pid=27772)[0m 
+[36m(pid=25284)[0m 
+[36m(pid=14312)[0m 
+[36m(pid=23836)[0m 
+[36m(ClientAppActor pid=23836)[0m Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[36m(pid=23836)[0m WARNING:tensorflow:From c:\Users\rasmu\OneDrive - BTH Student\Documents\PythonProjects\year4\AI-Security--DV2607\Assignment\.venv311_AI_security\Lib\site-packages\keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.[32m [repeated 5x across cluster][0m
+[92mINFO [0m:      aggregate_train: Received 5 results and 0 failures
+[92mINFO [0m:      	└──> Aggregated MetricRecord: {'train_loss': 2.240874509429932}
+[92mINFO [0m:      Global evaluation
+[92mINFO [0m:      	└──> MetricRecord: {'accuracy': 0.2692, 'loss': 2.0865211577355107, 'kappa': 0.18800000000000017, 'f1': 0.2471704567582984}
+[92mINFO [0m:      
+[92mINFO [0m:      [ROUND 2/2]
+[92mINFO [0m:      configure_train: Sampled 5 nodes (out of 5)
+[92mINFO [0m:      aggregate_train: Received 5 results and 0 failures
+[92mINFO [0m:      	└──> Aggregated MetricRecord: {'train_loss': 1.9727992791175843}
+[92mINFO [0m:      Global evaluation
+[92mINFO [0m:      	└──> MetricRecord: {'accuracy': 0.3562, 'loss': 1.7639824966841107, 'kappa': 0.2846666666666666, 'f1': 0.3376891485006928}
+[92mINFO [0m:      
+[92mINFO [0m:      Strategy execution finished in 158.20s
+[92mINFO [0m:      
+[92mINFO [0m:      Final results:
+[92mINFO [0m:      
+[92mINFO [0m:      	Global Arrays:
+[92mINFO [0m:      		ArrayRecord (0.626 MB)
+[92mINFO [0m:      	
+[92mINFO [0m:      	Aggregated ClientApp-side Train Metrics:
+[92mINFO [0m:      	{1: {'train_loss': '2.2409e+00'}, 2: {'train_loss': '1.9728e+00'}}
+[92mINFO [0m:      	
+[92mINFO [0m:      	Aggregated ClientApp-side Evaluate Metrics:
+[92mINFO [0m:      	{}
+[92mINFO [0m:      	
+[92mINFO [0m:      	ServerApp-side Evaluate Metrics:
+[92mINFO [0m:      	{ 0: { 'accuracy': '9.9800e-02',
+[92mINFO [0m:      	       'f1': '3.2730e-02',
+[92mINFO [0m:      	       'kappa': '-2.2222e-04',
+[92mINFO [0m:      	       'loss': '2.3053e+00'},
+[92mINFO [0m:      	  1: { 'accuracy': '2.6920e-01',
+[92mINFO [0m:      	       'f1': '2.4717e-01',
+[92mINFO [0m:      	       'kappa': '1.8800e-01',
+[92mINFO [0m:      	       'loss': '2.0865e+00'},
+[92mINFO [0m:      	  2: { 'accuracy': '3.5620e-01',
+[92mINFO [0m:      	       'f1': '3.3769e-01',
+[92mINFO [0m:      	       'kappa': '2.8467e-01',
+[92mINFO [0m:      	       'loss': '1.7640e+00'}}
+[92mINFO [0m:      
+Resultat sparade i C:\Users\rasmu\OneDrive - BTH Student\Documents\PythonProjects\year4\AI-Security--DV2607\Assignment\Part_2-Federated Learning\resultat\fedtrimmedavg_attack0_rounds2.json
+[36m(ClientAppActor pid=27772)[0m [93mWARNING [0m:   Manually terminating ClientAppActor
+[36m(ClientAppActor pid=25284)[0m Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.[32m [repeated 4x across cluster][0m
+[36m(ClientAppActor pid=14312)[0m [93mWARNING [0m:   Manually terminating ClientAppActor[32m [repeated 5x across cluster][0m
+[92mINFO [0m:      

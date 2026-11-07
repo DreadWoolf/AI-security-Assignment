@@ -3,7 +3,14 @@
 import torch
 from flwr.app import ArrayRecord, ConfigRecord, Context, MetricRecord
 from flwr.serverapp import Grid, ServerApp
-from flwr.serverapp.strategy import FedAvg, FedMedian
+# from flwr.serverapp.strategy import FedAvg, FedMedian
+from flwr.serverapp.strategy import (
+    FedAvg,
+    FedMedian,
+    FedTrimmedAvg,
+    FedAvgM,
+    FedYogi
+)
 
 import json
 from pathlib import Path
@@ -26,12 +33,52 @@ def main(grid: Grid, context: Context) -> None:
     global_model = Net()
     arrays = ArrayRecord(global_model.state_dict())
 
-    # Initialize FedAvg strategy
-    # strategy = FedAvg(fraction_evaluate=fraction_evaluate)
-    use_median = context.run_config["use-median"]
+    # # Initialize FedAvg strategy
+    # # strategy = FedAvg(fraction_evaluate=fraction_evaluate)
+    # use_median = context.run_config["use-median"]
 
-    strategy_cls = FedMedian if use_median else FedAvg
-    strategy = strategy_cls(fraction_evaluate=fraction_evaluate)
+    # strategy_cls = FedMedian if use_median else FedAvg
+    # strategy = strategy_cls(fraction_evaluate=fraction_evaluate)
+
+    #####################################################
+    #       Select aggregation strategy                 #
+    # (makes it possible to resuse same server code)    #
+    #####################################################
+    strategy_name = context.run_config["strategy-name"]
+
+    strategies = {
+        "fedavg": FedAvg,
+        "fedmedian": FedMedian,
+        "fedtrimmedavg": FedTrimmedAvg,
+        "fedavgm": FedAvgM,
+        "fedyogi": FedYogi
+    }
+
+    if strategy_name not in strategies:
+        raise ValueError(f"Unknown strategy: {strategy_name}")
+
+    params = {"fraction_evaluate": fraction_evaluate}
+
+    if strategy_name == "fedavgm":
+        params["server_momentum"] = 0.9
+
+    elif strategy_name == "fedtrimmedavg":
+        params["beta"] = 0.2
+
+    elif strategy_name == "fedyogi":
+        params["eta_l"] = lr
+
+    # Create the strategy
+    strategy = strategies[strategy_name](**params)
+
+    print(f"Selected strategy: {strategy_name}")
+
+    #####################################################
+    #####################################################
+    #####################################################
+    
+
+
 
     # Start strategy, run FedAvg for `num_rounds`
     result = strategy.start(
