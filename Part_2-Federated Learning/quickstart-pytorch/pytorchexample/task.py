@@ -55,6 +55,7 @@ def load_data(partition_id: int, num_partitions: int, batch_size: int):
     # Only initialize `FederatedDataset` once
     global fds
     if fds is None:
+        # Distribute the dataset into IID partitions across clients.
         partitioner = IidPartitioner(num_partitions=num_partitions)
         fds = FederatedDataset(
             dataset="uoft-cs/cifar10",
@@ -81,7 +82,7 @@ def load_centralized_dataset():
     return DataLoader(dataset, batch_size=128)
 
 
-# def train(net, trainloader, epochs, lr, device):
+# flip_labels -> om clienten ska vara attackerare eller inte. (sätts i client_app.py)
 def train(net, trainloader, epochs, lr, device, flip_labels=False):
     """Train the model on the training set."""
     net.to(device)  # move model to GPU if available
@@ -93,10 +94,12 @@ def train(net, trainloader, epochs, lr, device, flip_labels=False):
         for batch in trainloader:
             images = batch["img"].to(device)
             labels = batch["label"].to(device)
-            # if flip_labels:
-            #     labels = (labels + 1) % 10
+
+            # Genomför attacken som label flipping, ifall clienten är attackerare.
             if flip_labels:
+                # Copy, så vi inte modifierar orginal ettiketerna!
                 labels = labels.clone()
+                # Cat == 3, Dog == 5 -> the flipping/Attack.
                 labels[labels == 3] = 5
 
             

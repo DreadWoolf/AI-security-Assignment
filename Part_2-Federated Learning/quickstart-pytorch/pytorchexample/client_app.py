@@ -22,12 +22,6 @@ def train(msg: Message, context: Context):
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     model.to(device)
 
-    # # Load the data
-    # partition_id = context.node_config["partition-id"]
-    # num_partitions = context.node_config["num-partitions"]
-    # batch_size = context.run_config["batch-size"]
-    # trainloader, _ = load_data(partition_id, num_partitions, batch_size)
-
     # Load the data
     partition_id = context.node_config["partition-id"]
     num_partitions = context.node_config["num-partitions"]
@@ -38,16 +32,6 @@ def train(msg: Message, context: Context):
     # Determine whether this client is malicious
     num_attacked = int(context.run_config["num-attacked-clients"])
     is_attacker = partition_id < num_attacked
-
-
-    # # Call the training function
-    # train_loss = train_fn(
-    #     model,
-    #     trainloader,
-    #     context.run_config["local-epochs"],
-    #     msg.content["config"]["lr"],
-    #     device,
-    # )
 
 
 

@@ -3,7 +3,6 @@
 import torch
 from flwr.app import ArrayRecord, ConfigRecord, Context, MetricRecord
 from flwr.serverapp import Grid, ServerApp
-# from flwr.serverapp.strategy import FedAvg, FedMedian
 from flwr.serverapp.strategy import (
     FedAvg,
     FedMedian,
@@ -33,13 +32,6 @@ def main(grid: Grid, context: Context) -> None:
     global_model = Net()
     arrays = ArrayRecord(global_model.state_dict())
 
-    # # Initialize FedAvg strategy
-    # # strategy = FedAvg(fraction_evaluate=fraction_evaluate)
-    # use_median = context.run_config["use-median"]
-
-    # strategy_cls = FedMedian if use_median else FedAvg
-    # strategy = strategy_cls(fraction_evaluate=fraction_evaluate)
-
     #####################################################
     #       Select aggregation strategy                 #
     # (makes it possible to resuse same server code)    #
@@ -59,12 +51,15 @@ def main(grid: Grid, context: Context) -> None:
 
     params = {"fraction_evaluate": fraction_evaluate}
 
+    # Server momentum of 0.9, hur starkt tidigare serveruppdateringar påverkar nästa
     if strategy_name == "fedavgm":
         params["server_momentum"] = 0.9
 
+    # Tar bort högsta och lägsta värdet för varje parameter bland klienterna.
     elif strategy_name == "fedtrimmedavg":
         params["beta"] = 0.2
 
+    # Lokal learning rate-parameter i serverstrategin.
     elif strategy_name == "fedyogi":
         params["eta_l"] = lr
 
@@ -81,6 +76,7 @@ def main(grid: Grid, context: Context) -> None:
 
 
     # Start strategy, run FedAvg for `num_rounds`
+    # # Spara centrala mätvärden per runda till en JSON-fil
     result = strategy.start(
         grid=grid,
         initial_arrays=arrays,
@@ -89,13 +85,7 @@ def main(grid: Grid, context: Context) -> None:
         evaluate_fn=global_evaluate,
     )
 
-    # # Spara centrala mätvärden per runda till en JSON-fil
-    # results_dir = Path.home() / "flower_results"
-    # results_dir.mkdir(exist_ok=True)
-    # Save results inside the project
-    # project_dir = Path(
-    #     r"C:\Users\rasmu\OneDrive - BTH Student\Documents\PythonProjects\year4\AI-Security--DV2607\Assignment\Part_2-Federated Learning\quickstart-pytorch"
-    # )
+
 
 
     # Find Assignment directory from current working directory
@@ -109,9 +99,6 @@ def main(grid: Grid, context: Context) -> None:
     if assignment_dir is None:
         raise RuntimeError(f"Could not find Assignment directory from {cwd}")
 
-    # # Save results inside Assignment/resultat
-    # results_dir = assignment_dir / "resultat"
-    # results_dir.mkdir(parents=True, exist_ok=True)
 
     # Create directories
     results_dir = assignment_dir / "Part_2-Federated Learning" / "resultat"
@@ -120,9 +107,6 @@ def main(grid: Grid, context: Context) -> None:
     results_dir.mkdir(parents=True, exist_ok=True)
     models_dir.mkdir(parents=True, exist_ok=True)
     
-    # results_dir = project_dir / "results"
-    # results_dir.mkdir(parents=True, exist_ok=True)
-    # # run_name = context.run_config["run-name"]
     run_name = (
         f"{context.run_config['run-name']}"
         f"_attack{context.run_config['num-attacked-clients']}"
@@ -134,11 +118,6 @@ def main(grid: Grid, context: Context) -> None:
 
     print(f"Resultat sparade i {results_dir / f'{run_name}.json'}")
 
-    # if context.run_config["save-model"]:
-    #     print("\nSaving final model to disk...")
-    #     state_dict = result.arrays.to_torch_state_dict()
-    #     torch.save(state_dict, "final_model.pt")
-    
 
     # Save final model to disk
     if context.run_config["save-model"]:
