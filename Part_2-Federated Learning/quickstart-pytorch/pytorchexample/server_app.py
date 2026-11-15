@@ -153,7 +153,7 @@ def main(grid: Grid, context: Context) -> None:
 
 
 def global_evaluate(server_round: int, arrays: ArrayRecord) -> MetricRecord:
-    """Utv채rderar den globala modellen p책 hela testdatan, inklusive Kappa och F1."""
+    """Utvärderar den globala modellen på hela testdatan, inklusive Kappa och F1."""
     model = Net()
     model.load_state_dict(arrays.to_torch_state_dict())
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
