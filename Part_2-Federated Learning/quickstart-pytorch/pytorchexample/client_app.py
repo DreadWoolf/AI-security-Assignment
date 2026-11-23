@@ -29,6 +29,7 @@ def train(msg: Message, context: Context):
 
     trainloader, _ = load_data(partition_id, num_partitions, batch_size)
 
+
     # Determine whether this client is malicious
     num_attacked = int(context.run_config["num-attacked-clients"])
     is_attacker = partition_id < num_attacked
